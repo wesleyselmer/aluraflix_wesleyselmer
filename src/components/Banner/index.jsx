@@ -3,14 +3,24 @@ import CardBanner from "@/components/CardBanner";
 
 const DivEstilizada = styled.div`
   height: 700px;
-  max-width: 100vw;
+  max-width: 100%;
   overflow: hidden;
+  background-color: #0B1528;
+  position: relative;
+  z-index: 1;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
 `;
 
 const ImgCortada = styled.img`
   width: 100%;
-  object-position: 0 -125px;
-  filter: brightness(56%);
+  height: 648px;
+  object-fit: cover;
+  filter: brightness(30%);
+  position: relative;
+  z-index: 2;
 `;
 
 function Banner() {

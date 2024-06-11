@@ -22,7 +22,7 @@ const HeaderEstilizado = styled.header`
     & nav {
         display: flex;
         gap: 25px;
-        margin: 0 25px;
+        margin: 0 51.15px;
     }
 `
 function Header() {

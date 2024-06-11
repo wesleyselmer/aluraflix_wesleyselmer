@@ -5,10 +5,21 @@ const DivCardBanner = styled.div`
   width: 1361.89px;
   max-width: 100%;
   height: 333.58px;
+  margin: auto;
   display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 3;
+  top: -450px;
+
 
   align-items: center;
   justify-content: center;
+
+  img {
+      width: 646px;
+      height: 333.58px;
+    }
 `;
 
 const DivInfo = styled.div`
@@ -44,6 +55,7 @@ function CardBanner() {
           vídeo feito com todo o carinho do mundo construindo uma "Pokedex"!
         </p>
       </DivInfo>
+      <img src="/imagens/banner.png" alt="Banner do Card" />
     </DivCardBanner>
   );
 }
