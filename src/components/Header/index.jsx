@@ -1,10 +1,11 @@
 import styled from "styled-components"
 import logo from "/imagens/logo.png"
-import NavBarLink from "@/components/NavBarLink"
+import NavBarLink from "@/components/Header/NavBarLink"
 import { Link } from "react-router-dom"
 
 const HeaderEstilizado = styled.header`
     max-width: 100vw;
+    width: 100%;
     height: 125px;
     background-color: #262626;
     display: flex;
@@ -12,6 +13,8 @@ const HeaderEstilizado = styled.header`
     justify-content: space-between;
     border-bottom: 2px solid #2271d1;
     box-shadow: 0 5px 20px #2271d1;
+    position: fixed;
+    z-index: 99;
 
     & img {
         width: 168.45px;

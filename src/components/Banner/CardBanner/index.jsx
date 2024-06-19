@@ -45,7 +45,7 @@ function CardBanner() {
   return (
     <DivCardBanner className="DivClassBanner">
       <DivInfo>
-        <ClassTags>FRONT END</ClassTags>
+        <ClassTags local='banner'>FRONT END</ClassTags>
         <h1>SEO con React</h1>
         <p>
           Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar

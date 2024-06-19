@@ -2,25 +2,33 @@ import EstilosGlobais from "@/components/EstilosGlobais";
 import styled from "styled-components";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
+import Cards from "@/components/Cards";
 
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #191919;
+  width: 100%;
+  max-width: 100vw;
+`;
+
+const MainContainer = styled.main`
+  position: absolute;
+  top: 825px;
 `;
 
 function Home() {
-    return (
-        <DivContainer className="container">
+  return (
+    <>
       <EstilosGlobais />
-      <Header />
-      <Banner />
-      <main>
-            <h1>Home!</h1>
-        </main>
-    </DivContainer>
-        
-    )
+      <DivContainer className="container">
+        <Header />
+        <Banner />
+        <MainContainer>
+          <Cards tipo="FRONT END" quantidade="3" />
+        </MainContainer>
+      </DivContainer>
+    </>
+  );
 }
 
-export default Home
+export default Home;

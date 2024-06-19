@@ -28,6 +28,8 @@ const EstilosGlobais = createGlobalStyle`
       -webkit-text-size-adjust: 100%; 
       font-family: MontserratRegular;
       width: 100vw;
+      background-color: #191919;
+      overflow: scroll;
     }
     body {
       margin: 0;
