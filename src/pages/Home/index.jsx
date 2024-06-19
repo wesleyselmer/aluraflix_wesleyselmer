@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import Cards from "@/components/Cards";
+import Footer from "@/components/Footer";
 
 const DivContainer = styled.div`
   display: flex;
@@ -12,8 +13,7 @@ const DivContainer = styled.div`
 `;
 
 const MainContainer = styled.main`
-  position: absolute;
-  top: 825px;
+
 `;
 
 function Home() {
@@ -26,6 +26,7 @@ function Home() {
         <MainContainer>
           <Cards tipo="FRONT END" quantidade="3" />
         </MainContainer>
+        <Footer />
       </DivContainer>
     </>
   );

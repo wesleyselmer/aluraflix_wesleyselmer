@@ -13,8 +13,6 @@ const HeaderEstilizado = styled.header`
     justify-content: space-between;
     border-bottom: 2px solid #2271d1;
     box-shadow: 0 5px 20px #2271d1;
-    position: fixed;
-    z-index: 99;
 
     & img {
         width: 168.45px;

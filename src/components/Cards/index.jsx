@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import Card from './Card';
 
 const DivCards = styled.div`
-    position: relative;
-    top: -35px;
-    margin: auto;
     display: flex;
     flex-direction: column;
-    margin: 0 40px;
+    margin: 0 40px 40px;
     gap: 40px;
+    
+    position: relative;
+    top: -35px;
 `
 
 const DivCard = styled.div`
@@ -23,9 +23,9 @@ function Cards({ tipo, quantidade }) {
         <DivCards>
             <ClassTags local='main'>{tipo}</ClassTags>
             <DivCard>
-                <Card />
-                <Card />
-                <Card />
+                <Card img="FE_01.png" />
+                <Card img="FE_02.png" />
+                <Card img="FE_03.png" />
             </DivCard>
         </DivCards>
     )

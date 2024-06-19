@@ -71,8 +71,6 @@ const EstilosGlobais = createGlobalStyle`
     sup {
       font-size: 75%;
       line-height: 0;
-      position: relative;
-      vertical-align: baseline;
     }
     sub {
       bottom: -0.25em;

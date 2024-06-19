@@ -9,9 +9,7 @@ const DivCardBanner = styled.div`
   display: flex;
   gap: 20px;
   position: relative;
-  z-index: 3;
-  top: -450px;
-
+  top: -500px;
 
   align-items: center;
   justify-content: center;
