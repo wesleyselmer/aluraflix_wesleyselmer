@@ -8,7 +8,7 @@ const DivEstilizada = styled.div`
   overflow: hidden;
   background-color: #0B1528;
   position: absolute;
-  top: 125px;
+  top: 115px;
 `;
 
 const ImgCortada = styled.img`
