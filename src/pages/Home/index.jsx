@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Banner from "@/components/Banner";
 import Cards from "@/components/Cards";
+import { useEffect } from "react";
+import { useVideoContext } from "../../context/VideosContext";
 
 const DivContainer = styled.div`
   display: flex;
@@ -9,11 +11,19 @@ const DivContainer = styled.div`
   max-width: 100vw;
 `;
 
-const MainContainer = styled.main`
-
-`;
+const MainContainer = styled.main``;
 
 function Home() {
+  const adicionarVideo = useVideoContext(adicionarVideo);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/videos")
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        dados.forEach((dado) => adicionarVideo(dado));
+      });
+  }, []);
+
   return (
     <>
       <DivContainer className="container">
