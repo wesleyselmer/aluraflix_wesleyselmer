@@ -18,7 +18,7 @@ const DivCard = styled.div`
     gap: 30px;
 `
 
-function Cards({ tipo, quantidade }) {
+function Cards({ tipo }) {
     return (
         <DivCards>
             <ClassTags local='main'>{tipo}</ClassTags>

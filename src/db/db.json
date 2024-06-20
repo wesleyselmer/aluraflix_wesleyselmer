@@ -1,0 +1,76 @@
+{
+  "videos": [
+    {
+      "id": "1",
+      "categoria": "1",
+      "titulo": "O que faz uma desenvolvedora Front-End",
+      "imagem": "/imagens/FE_01.png",
+      "link": "https://www.youtube.com/watch?v=ZY3-MFxVdEw",
+      "descricao": "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa nesse episódio!"
+    },
+    {
+        "id": "2",
+        "categoria": "1",
+        "titulo": "ÁRVORE BINÁRIA de BUSCA | Estruturas de Dados #13",
+        "imagem": "/imagens/FE_02.png",
+        "link": "https://www.youtube.com/watch?v=VmKkAQtnjsM",
+        "descricao": "Neste vídeo, iniciamos a implementação de uma Árvore Binária de Busca, uma estrutura de dados que favorece a realização de buscas muito eficientes."
+      },
+      {
+        "id": "3",
+        "categoria": "1",
+        "titulo": "O que é e o que faz quem trabalha com UX? User Experience e Usabilidade",
+        "imagem": "/imagens/FE_03.png",
+        "link": "https://www.youtube.com/watch?v=FJhMCi07T4A",
+        "descricao": "Chegou o episódio com a musa brasileira de UX, a Carla de Bona! Entenda a Experiência do Usuário e porque ela é importante para qualquer negócio, seja de produtos ou serviços. "
+      },
+      {
+        "id": "4",
+        "categoria": "2",
+        "titulo": "O que estudar para ser desenvolvedor backend",
+        "imagem": "/imagens/BE_01.png",
+        "link": "https://www.youtube.com/watch?v=3Wo4L2dPS58",
+        "descricao": "Oie! No vídeo de hoje eu trouxe algumas dicas para começar os estudos para ser dev backend"
+      },
+      {
+        "id": "5",
+        "categoria": "2",
+        "titulo": "Coders4Tips - S01E04: GitHub CLI - Uma Nova Experiência no Github!",
+        "imagem": "/imagens/BE_02.png",
+        "link": "https://www.youtube.com/watch?v=6o6-bKOZOEY",
+        "descricao": "Nesse vídeo vamos aprender um pouco mais o que seria o GitHub CLI e quais são as suas vantagens!"
+      },
+      {
+        "id": "6",
+        "categoria": "2",
+        "titulo": "Qual é a melhor linguagem de programação?",
+        "imagem": "/imagens/BE_03.png",
+        "link": "https://www.youtube.com/watch?v=Uh-GNH-t89w",
+        "descricao": "PHP, JavaScript, Python, Java e outras... qual é a melhor? Como surgiram essas linguagens e quais as aplicações e usos de cada uma na aprendizagem e para o mercado? Descubra nesta conversa da Roberta Arcoverde e do Paulo Silveira. "
+      },
+      {
+        "id": "7",
+        "categoria": "3",
+        "titulo": "Desenvolvimento Android",
+        "imagem": "/imagens/MO_01.png",
+        "link": "https://www.youtube.com/watch?v=fWscDFHKgw8",
+        "descricao": "Um episódio focado no desenvolvimento de aplicações Android. Neste bate-papo, Paulo Silveira e Felipe Torres conversam sobre os primeiros passos para começar a desenvolver, quais as principais ferramentas do desenvolvimento mobile, como colocar sua aplicação no ar e mais! "
+      },
+      {
+        "id": "8",
+        "categoria": "3",
+        "titulo": "React Native EU 2019: Emily Janzer - The New React Native",
+        "imagem": "/imagens/MO_02.png",
+        "link": "https://www.youtube.com/watch?v=52El0EUI6D0",
+        "descricao": "Conference 2019 - React Native EU - September 5-6th, Wroclaw, Poland"
+      },
+      {
+        "id": "9",
+        "categoria": "3",
+        "titulo": "Como começar sua primeira app com o Flutter - Hello World",
+        "imagem": "/imagens/MO_03.png",
+        "link": "https://www.youtube.com/watch?v=xSC8j3gl7xM",
+        "descricao": "Chegou a hora de criarmos nosso primeiro aplicativo com o Flutter e entender como fazer tudo funcionar! "
+      }
+  ]
+}

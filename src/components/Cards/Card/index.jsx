@@ -8,13 +8,13 @@ const DivCard = styled.div`
     border: 2px solid #2271d1;
     border-radius: 10px;
     box-shadow: inset 0 5px 20px #2271d1;
-    flex: 1 1 auto;
+    margin: auto;
     overflow: hidden;
     
 
     & img {
-       width: 432px;
-       height: 260px; 
+       width: 100%;
+       height: 100%; 
        object-fit: cover;
     }
 `
