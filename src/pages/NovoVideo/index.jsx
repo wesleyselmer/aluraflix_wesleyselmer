@@ -39,7 +39,7 @@ const DivNovoVideo = styled.div`
 
 const FormNovoVideo = styled.form`
   width: 100%;
-  font-size: 20px;
+  font-size: 1.39vw;
 
   .linha {
     display: flex;
@@ -54,27 +54,44 @@ const FormNovoVideo = styled.form`
     flex-direction: column;
   }
 
-  input{
+  input {
     background-color: transparent;
     border: 0.2vw solid #262626;
-    border-radius: 10px;
-    padding: 15px 5px;
+    border-radius: 0.7vw;
+    padding: 1.04vw 0.35vw;
     width: 80%;
-    font-size: 20px;
-    color: #A5A5A5;
+    font-size: 1.39vw;
+    color: #a5a5a5;
   }
 
-  textarea{
+  textarea {
     background-color: transparent;
     border: 0.2vw solid #262626;
-    border-radius: 10px;
-    padding: 15px 5px;
-    font-size: 20px;
-    color: #A5A5A5;
+    border-radius: 0.7vw;
+    padding: 1.04vw 0.35vw;
+    font-size: 1.39vw;
+    color: #a5a5a5;
+  }
+
+  button{
+    background-color: transparent;
+    border: 0.2vw solid #FFFFFF;
+    border-radius: 0.7vw;
+    padding: 1.04vw;
+    width: 12.51vw;
+    height: 3.75vw;
+    color: #FFFFFF;
+    margin-right: 2.08vw;
+  }
+
+  button:hover{
+    border-color: #2271d1;
   }
 `;
 
 function NovoVideo() {
+  function adicionarVideo() {}
+
   return (
     <DivNovoVideo>
       <h1>NOVO VÍDEO</h1>
@@ -106,8 +123,18 @@ function NovoVideo() {
         <div className="linha">
           <div className="item">
             <label>Descrição</label>
-            <textarea placeholder="Sobre o que é esse vídeo?" rows="4" cols="40"></textarea>
+            <textarea
+              placeholder="Sobre o que é esse vídeo?"
+              rows="6"
+              cols="97"
+            ></textarea>
           </div>
+        </div>
+        <div className="linha">
+          <button type="submit" onClick={() => adicionarVideo()}>
+            Guardar
+          </button>
+          <button>Limpar</button>
         </div>
       </FormNovoVideo>
     </DivNovoVideo>
