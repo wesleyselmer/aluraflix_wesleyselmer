@@ -5,8 +5,8 @@ const LinkEstilizado = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180.13px;
-  height: 54px;
+  width: 12vw;
+  height: 4vw;
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;

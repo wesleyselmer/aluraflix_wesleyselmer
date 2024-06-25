@@ -2,29 +2,28 @@ import ClassTags from "@/components/ClassTags";
 import styled from "styled-components";
 
 const DivCardBanner = styled.div`
-  width: 1361.89px;
-  max-width: 100%;
-  height: 333.58px;
-  margin: auto;
+  width: 94vw;
+  height: 23vw;
+  margin: 0 40px;
   display: flex;
   gap: 20px;
   position: relative;
-  top: -500px;
+  top: -35vw;
 
   align-items: center;
   justify-content: center;
 
   img {
-      width: 646px;
-      height: 333.58px;
+      width: 45vw;
+      height: 23vw;
     }
 `;
 
 const DivInfo = styled.div`
     display: flex;
     flex-direction: column;
-    width: 665.84px; 
-    height: 305px; 
+    width: 46vw; 
+    height: 21vw; 
     color: #F5F5F5;
 
     h1 {

@@ -5,7 +5,7 @@ import logo from "/imagens/logo.png"
 const DivFooter = styled.footer`
   max-width: 100vw;
   width: 100%;
-  height: 125px;
+  height: 8vw;
   background-color: #262626;
   display: flex;
   align-items: center;

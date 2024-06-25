@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import CardBanner from "@/components/Banner/CardBanner";
+import CardBanner from "./CardBanner";
 
 const DivBanner = styled.div`
-  height: 700px;
+  height: 48vw;
   max-width: 100vw;
   width: 100%;
   overflow: hidden;
@@ -12,7 +12,7 @@ const DivBanner = styled.div`
 
 const ImgCortada = styled.img`
   width: 100%;
-  height: 648px;
+  height: 45vw;
   object-fit: cover;
   filter: brightness(30%);
   position: relative; 

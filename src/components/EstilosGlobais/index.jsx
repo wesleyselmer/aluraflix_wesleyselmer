@@ -27,7 +27,7 @@ const EstilosGlobais = createGlobalStyle`
       line-height: 1.15; 
       -webkit-text-size-adjust: 100%; 
       font-family: MontserratRegular;
-      width: 100vw;
+      width: 100%;
       background-color: #191919;
       overflow: scroll;
     }

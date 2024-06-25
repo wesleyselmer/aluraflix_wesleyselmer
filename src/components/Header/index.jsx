@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const HeaderEstilizado = styled.header`
     max-width: 100vw;
     width: 100%;
-    height: 125px;
+    height: 8vw;
     background-color: #262626;
     display: flex;
     align-items: center;
@@ -15,8 +15,8 @@ const HeaderEstilizado = styled.header`
     box-shadow: 0 5px 20px #2271d1;
 
     & img {
-        width: 168.45px;
-        height: 40px;
+        width: 12vw;
+        height: 3vw;
         margin: 0 51.15px;
     }
 
