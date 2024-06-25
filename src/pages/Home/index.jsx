@@ -7,7 +7,8 @@ const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 99vw;
+  max-width: 100vw;
+  margin: auto;
 `;
 
 const MainContainer = styled.main``;

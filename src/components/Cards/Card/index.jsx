@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import deletar from "/imagens/deletar.png"
 import editar from "/imagens/editar.png"
+import { useVideoContext } from "../../../hooks/UseVideosContext"
 
 const DivCard = styled.div`
     width: 30vw;
     height: 22vw;
-    border: 2px solid #2271d1;
-    border-radius: 10px;
-    box-shadow: inset 0 5px 20px #2271d1;
+    border: .14vw solid #2271d1;
+    border-radius: .7vw;
+    box-shadow: inset 0 .35vw 1.39vw #2271d1;
     margin: auto;
     overflow: hidden;
     
@@ -31,10 +32,10 @@ const DivCardBotao = styled.div`
     align-items: center;
 
     & h2 {
-        font-size: 16px;
+        font-size: 1.11vw;
         color: #FFFFFF;
         font-weight: bolder;
-        padding-left: 10px;
+        padding-left: .7vw;
     }
 
     & img {
@@ -43,13 +44,15 @@ const DivCardBotao = styled.div`
     }
 `
 
-function Card({ img }) {
+function Card({ id, img }) {
+    const {removerVideo}  = useVideoContext();
+
     return (
         <DivCard className="DivCard">
             <img src={img} alt={img} />
             <DivCardBotoes className="DivCardBotoes">
                 <DivCardBotao className="DivCardBotão">
-                    <img src={deletar} alt="Deletar" />
+                    <img src={deletar} alt="Deletar" onClick={() => removerVideo(id)}/>
                     <h2>Deletar</h2>
                 </DivCardBotao>
                 <DivCardBotao className="DivCardBotão">

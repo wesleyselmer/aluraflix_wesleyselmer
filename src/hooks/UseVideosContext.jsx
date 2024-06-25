@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { VideosContext } from "../context/VideosContext";
 
-export function useVideoContext() {
+export const useVideoContext = () => {
     const { videos, setVideos } = useContext(VideosContext);
 
     function adicionarVideo(novoVideo) {
@@ -28,5 +28,14 @@ export function useVideoContext() {
         return setVideos(novaLista);
     }
 
-    return { videos, adicionarVideo, removerVideo }
+    function atualizarVideo(id, videoAlterado){
+        videos.map((video) => {
+            if(video.id === id){
+                return (videoAlterado)
+            }
+            return video;
+        });
+    }
+
+    return { videos, adicionarVideo, atualizarVideo, removerVideo }
 }

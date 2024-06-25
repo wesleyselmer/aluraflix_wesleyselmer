@@ -11,19 +11,19 @@ const HeaderEstilizado = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #2271d1;
-    box-shadow: 0 5px 20px #2271d1;
+    border-bottom: .14vw solid #2271d1;
+    box-shadow: 0 .35vw 1.39vw #2271d1;
 
     & img {
         width: 12vw;
         height: 3vw;
-        margin: 0 51.15px;
+        margin: 0 3.54vw;
     }
 
     & nav {
         display: flex;
-        gap: 25px;
-        margin: 0 51.15px;
+        gap: 1.74vw;
+        margin: 0 3.54vw;
     }
 `
 function Header() {

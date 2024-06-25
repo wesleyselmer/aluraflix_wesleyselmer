@@ -4,9 +4,9 @@ import styled from "styled-components";
 const DivCardBanner = styled.div`
   width: 94vw;
   height: 23vw;
-  margin: 0 40px;
+  margin: 0 2.78vw;
   display: flex;
-  gap: 20px;
+  gap: 1.39vw;
   position: relative;
   top: -35vw;
 
@@ -27,14 +27,14 @@ const DivInfo = styled.div`
     color: #F5F5F5;
 
     h1 {
-        font-size: 46px;
-        margin: 40px 0 0;
+        font-size: 3.19vw;
+        margin: 2.78vw 0 0;
     }
 
     p {
-        font-size: 18px;
+        font-size: 1.25vw;
         font-weight: lighter;
-        margin: 10px 0 0;
+        margin: 0.7vw 0 0;
     }
 `
 

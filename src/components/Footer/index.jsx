@@ -10,8 +10,8 @@ const DivFooter = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 2px solid #2271d1;
-  box-shadow: 0 5px 20px #2271d1;
+  border-top: .14vw solid #2271d1;
+  box-shadow: 0 .35vw 1.39vw #2271d1;
 `;
 
 const ImgFooter = styled.img`

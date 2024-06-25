@@ -8,11 +8,11 @@ const DivTags = styled.div`
   font-size: ${(props) => props.$fontSize};
   font-weight: bolder;
   line-height: auto;
-  border-radius: 15px;
+  border-radius: 1.04vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 1.39vw;
 `;
 
 function ClassTags({ children, local }) {
@@ -26,13 +26,13 @@ function ClassTags({ children, local }) {
         return "#FFBA05";
     }
   }
-  const widthBanner = "296.82px";
-  const heightBanner = "92px";
-  const fontSizeBanner = "48px";
+  const widthBanner = "20vw";
+  const heightBanner = "6vw";
+  const fontSizeBanner = "2.5vw";
 
-  const widthMain = "432px";
-  const heightMain = "70px";
-  const fontSizeMain = "32px";
+  const widthMain = "27vw";
+  const heightMain = "4.86vw";
+  const fontSizeMain = "2.22vw";
 
   let width = "";
   let height = "";

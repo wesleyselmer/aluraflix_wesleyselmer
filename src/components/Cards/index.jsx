@@ -6,18 +6,18 @@ import { useVideoContext } from "../../hooks/UseVideosContext";
 const DivCards = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 40px 40px;
-  gap: 40px;
+  margin: 0 2.78vw 2.78vw;
+  gap: 2.78vw;
 
   position: relative;
   top: -2vw;
 `;
 
 const DivCard = styled.div`
-  width: calc(100vw - 80px);
+  width: calc(100vw - 5.56vw);
   display: flex;
-  gap: 30px;
-  margin-bottom: 93px;
+  gap: 2.08vw;
+  margin-bottom: 6.46vw;
 `;
 
 function Cards() {
@@ -44,7 +44,7 @@ function Cards() {
       <DivCard className="FrontEnd">
         {videosFE.length > 0
           ? videosFE.map((videoFE) => (
-              <Card key={videoFE.id} img={videoFE.imagem} />
+              <Card key={videoFE.id} id={videoFE.id} img={videoFE.imagem} />
             ))
           : ""}
       </DivCard>
@@ -52,7 +52,7 @@ function Cards() {
       <DivCard className="BackEnd">
         {videosBE.length > 0
           ? videosBE.map((videoBE) => (
-              <Card key={videoBE.id} img={videoBE.imagem} />
+              <Card key={videoBE.id} id={videoBE.id} img={videoBE.imagem} />
             ))
           : ""}
       </DivCard>
@@ -60,7 +60,7 @@ function Cards() {
       <DivCard className="Mobile">
         {videosMB.length > 0
           ? videosMB.map((videoMB) => (
-              <Card key={videoMB.id} img={videoMB.imagem} />
+              <Card key={videoMB.id} id={videoMB.id} img={videoMB.imagem} />
             ))
           : ""}
       </DivCard>
