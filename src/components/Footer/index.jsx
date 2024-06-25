@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "/imagens/logo.png"
+import logo from "/imagens/logo.png";
 
 const DivFooter = styled.footer`
   max-width: 100vw;
@@ -14,11 +14,16 @@ const DivFooter = styled.footer`
   box-shadow: 0 5px 20px #2271d1;
 `;
 
+const ImgFooter = styled.img`
+  width: 12vw;
+  height: 3vw;
+`;
+
 function Footer() {
   return (
     <DivFooter>
       <Link to="/">
-        <img src={logo} alt="" />
+        <ImgFooter src={logo} alt="" />
       </Link>
     </DivFooter>
   );
