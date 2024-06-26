@@ -140,10 +140,8 @@ const MeuTextarea = ({ label, ...props }) => {
   );
 };
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 const NovoVideo = () => {
-  const { adicionarVideo } = useVideoContext();
+  const { videos, adicionarVideo } = useVideoContext();
 
   return (
     <DivNovoVideo>
@@ -168,76 +166,75 @@ const NovoVideo = () => {
           categoria: Yup.string()
             .oneOf(["1", "2", "3"], "Tipo inválido")
             .required("Obrigatório"),
-          imagem: Yup.string()
-            .min(4, "No mínimo 4 caracteres")
-            .required("Obrigatório"),
-          link: Yup.string()
-            .min(4, "No mínimo 4 caracteres")
-            .required("Obrigatório"),
+          imagem: Yup.string().required("Obrigatório"),
+          link: Yup.string().required("Obrigatório"),
         })}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           const novoVideo = {
+            id: String(videos.length + 1),
             categoria: values.categoria,
             titulo: values.titulo,
             imagem: values.imagem,
             link: values.link,
             descricao: values.descricao,
           };
-          adicionarVideo(novoVideo);
+          setTimeout(() => {
+            adicionarVideo(novoVideo);
+            actions.setSubmitting(false);
+          }, 1000);
+          console.log(videos);
         }}
       >
-        {({ isSubmitting }) => (
-          <FormNovoVideo>
-            <div className="linha">
-              <MeuInputTexto
-                label="Titulo"
-                name="titulo"
-                id="titulo"
-                type="text"
-                placeholder="Informe o título"
-              />
+        {props => (
+        <FormNovoVideo onSubmit={props.handleSubmit}>
+          <div className="linha">
+            <MeuInputTexto
+              label="Titulo"
+              name="titulo"
+              id="titulo"
+              type="text"
+              placeholder="Informe o título"
+            />
 
-              <MeuSelect label="Categoria: " name="categoria" id="categoria">
-                <option value="">Escolha a categoria</option>
-                <option value="1">Front-End</option>
-                <option value="2">Back-End</option>
-                <option value="3">Mobile</option>
-              </MeuSelect>
-            </div>
-            <div className="linha">
-              <MeuInputTexto
-                label="Imagem"
-                name="imagem"
-                id="imagem"
-                type="text"
-                placeholder="Informe a imagem"
-              />
+            <MeuSelect label="Categoria: " name="categoria" id="categoria">
+              <option value="">Escolha a categoria</option>
+              <option value="1">Front-End</option>
+              <option value="2">Back-End</option>
+              <option value="3">Mobile</option>
+            </MeuSelect>
+          </div>
+          <div className="linha">
+            <MeuInputTexto
+              label="Imagem"
+              name="imagem"
+              id="imagem"
+              type="text"
+              placeholder="Informe a imagem"
+            />
 
-              <MeuInputTexto
-                label="Link"
-                name="link"
-                id="link"
-                type="text"
-                placeholder="Informe o link do vídeo"
-              />
-            </div>
-            <div className="linha">
-              <MeuTextarea
-                label="Descricao"
-                name="descricao"
-                id="descricao"
-                placeholder="Sobre o que é esse vídeo?"
-                rows="7"
-                cols="106"
-              />
-            </div>
-            <div className="botoes">
-              <button type="submit" disabled={isSubmitting}>
-                Guardar
-              </button>
-              <button>Limpar</button>
-            </div>
-          </FormNovoVideo>
+            <MeuInputTexto
+              label="Link"
+              name="link"
+              id="link"
+              type="text"
+              placeholder="Informe o link do vídeo"
+            />
+          </div>
+          <div className="linha">
+            <MeuTextarea
+              label="Descricao"
+              name="descricao"
+              id="descricao"
+              placeholder="Sobre o que é esse vídeo?"
+              rows="7"
+              cols="106"
+            />
+          </div>
+          <div className="botoes">
+            <button type="submit">Guardar</button>
+            <button>Limpar</button>
+          </div>
+        </FormNovoVideo>
         )}
       </Formik>
     </DivNovoVideo>
