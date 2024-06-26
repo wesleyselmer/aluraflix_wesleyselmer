@@ -1,4 +1,8 @@
+import React from "react";
 import styled from "styled-components";
+import * as Yup from "yup";
+import { Formik, useField } from "formik";
+import { useVideoContext } from "../../hooks/UseVideosContext";
 
 const DivNovoVideo = styled.div`
   color: #f5f5f5;
@@ -21,9 +25,6 @@ const DivNovoVideo = styled.div`
 
   div {
     width: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
   }
 
   h2 {
@@ -44,24 +45,30 @@ const FormNovoVideo = styled.form`
   .linha {
     display: flex;
     flex-direction: row;
-    align-items: normal;
+    justify-content: space-between;
     flex-wrap: nowrap;
+    gap: 2.08vw;
     margin-bottom: 4.17vw;
+    width: 100%;
   }
 
   .item {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 0.5vw;
+    width: calc(50% - 2.08vw);
   }
 
   input {
     background-color: transparent;
     border: 0.2vw solid #262626;
     border-radius: 0.7vw;
-    padding: 1.04vw 0.35vw;
-    width: 80%;
+    padding: 1.04vw 0 1.04vw 1vw;
+    width: 100%;
     font-size: 1.39vw;
     color: #a5a5a5;
+    box-sizing: border-box;
   }
 
   textarea {
@@ -73,24 +80,70 @@ const FormNovoVideo = styled.form`
     color: #a5a5a5;
   }
 
-  button{
+  .botoes {
+    margin-bottom: 4.17vw;
+  }
+
+  button {
     background-color: transparent;
-    border: 0.2vw solid #FFFFFF;
+    border: 0.2vw solid #ffffff;
     border-radius: 0.7vw;
     padding: 1.04vw;
     width: 12.51vw;
     height: 3.75vw;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-right: 2.08vw;
   }
 
-  button:hover{
+  button:hover {
     border-color: #2271d1;
+  }
+
+  .erro {
+    color: #e53935;
   }
 `;
 
-function NovoVideo() {
-  function adicionarVideo() {}
+const MeuInputTexto = ({ label, ...props }) => {
+  const [campo, meta] = useField(props);
+  return (
+    <div className="item">
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <input className="text-input" {...campo} {...props} />
+      {meta.touched && meta.error ? (
+        <div className="erro">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+const MeuSelect = ({ label, ...props }) => {
+  const [campo, meta] = useField(props);
+  return (
+    <div className="item">
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <select {...campo} {...props} />
+      {meta.touched && meta.error ? (
+        <div className="erro">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+const MeuTextarea = ({ label, ...props }) => {
+  const [campo, meta] = useField(props);
+  return (
+    <div className="item">
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <textarea {...campo} {...props} />
+    </div>
+  );
+};
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const NovoVideo = () => {
+  const { adicionarVideo } = useVideoContext();
 
   return (
     <DivNovoVideo>
@@ -99,46 +152,96 @@ function NovoVideo() {
       <div>
         <h2>Criar Card</h2>
       </div>
-      <FormNovoVideo>
-        <div className="linha">
-          <div className="item">
-            <label>Título</label>
-            <input placeholder="Informe um título" />
-          </div>
-          <div className="item">
-            <label>Categoria</label>
-            <input placeholder="Selecione uma categoria" />
-          </div>
-        </div>
-        <div className="linha">
-          <div className="item">
-            <label>imagem</label>
-            <input placeholder="Informe o caminho da imagem" />
-          </div>
-          <div className="item">
-            <label>Video</label>
-            <input placeholder="Link do vídeo no YouTube" />
-          </div>
-        </div>
-        <div className="linha">
-          <div className="item">
-            <label>Descrição</label>
-            <textarea
-              placeholder="Sobre o que é esse vídeo?"
-              rows="6"
-              cols="97"
-            ></textarea>
-          </div>
-        </div>
-        <div className="linha">
-          <button type="submit" onClick={() => adicionarVideo()}>
-            Guardar
-          </button>
-          <button>Limpar</button>
-        </div>
-      </FormNovoVideo>
+      <Formik
+        initialValues={{
+          titulo: "",
+          categoria: "",
+          imagem: "",
+          link: "",
+          descricao: "",
+        }}
+        validationSchema={Yup.object({
+          titulo: Yup.string()
+            .min(4, "No mínimo 4 caracteres")
+            .max(15, "No máximo 15 caracteres")
+            .required("Obrigatório"),
+          categoria: Yup.string()
+            .oneOf(["1", "2", "3"], "Tipo inválido")
+            .required("Obrigatório"),
+          imagem: Yup.string()
+            .min(4, "No mínimo 4 caracteres")
+            .required("Obrigatório"),
+          link: Yup.string()
+            .min(4, "No mínimo 4 caracteres")
+            .required("Obrigatório"),
+        })}
+        onSubmit={(values) => {
+          const novoVideo = {
+            categoria: values.categoria,
+            titulo: values.titulo,
+            imagem: values.imagem,
+            link: values.link,
+            descricao: values.descricao,
+          };
+          adicionarVideo(novoVideo);
+        }}
+      >
+        {({ isSubmitting }) => (
+          <FormNovoVideo>
+            <div className="linha">
+              <MeuInputTexto
+                label="Titulo"
+                name="titulo"
+                id="titulo"
+                type="text"
+                placeholder="Informe o título"
+              />
+
+              <MeuSelect label="Categoria: " name="categoria" id="categoria">
+                <option value="">Escolha a categoria</option>
+                <option value="1">Front-End</option>
+                <option value="2">Back-End</option>
+                <option value="3">Mobile</option>
+              </MeuSelect>
+            </div>
+            <div className="linha">
+              <MeuInputTexto
+                label="Imagem"
+                name="imagem"
+                id="imagem"
+                type="text"
+                placeholder="Informe a imagem"
+              />
+
+              <MeuInputTexto
+                label="Link"
+                name="link"
+                id="link"
+                type="text"
+                placeholder="Informe o link do vídeo"
+              />
+            </div>
+            <div className="linha">
+              <MeuTextarea
+                label="Descricao"
+                name="descricao"
+                id="descricao"
+                placeholder="Sobre o que é esse vídeo?"
+                rows="7"
+                cols="106"
+              />
+            </div>
+            <div className="botoes">
+              <button type="submit" disabled={isSubmitting}>
+                Guardar
+              </button>
+              <button>Limpar</button>
+            </div>
+          </FormNovoVideo>
+        )}
+      </Formik>
     </DivNovoVideo>
   );
-}
+};
 
 export default NovoVideo;
