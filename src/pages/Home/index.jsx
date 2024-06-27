@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Cards from "../../components/Cards";
 import Slider from "../../components/Slider";
+import ModalEditar from "../../components/ModalEditar";
 
 
 const DivContainer = styled.div`
@@ -16,9 +17,11 @@ z-index: 1;
 `;
 
 function Home() {
+  
   return (
     <>
       <DivContainer className="container">
+        <ModalEditar />
         <Slider />
         <MainContainer>
           <Cards />
