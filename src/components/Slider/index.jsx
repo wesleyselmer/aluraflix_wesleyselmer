@@ -1,26 +1,27 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import { useVideosContext } from "../../hooks/UseVideosContext";
 import Banner from "../Banner";
 import "./styles.css";
-import { register } from "swiper/element/bundle";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-// Register Swiper web component
-register();
 
 export default function Slider() {
   const { videos } = useVideosContext();
 
   if (videos.length > 0) {
     return (
-      <swiper-container>
+      <Swiper
+        modules={[Navigation, Pagination]}
+        className="MeuSwiper"
+        navigation={true}
+        pagination={{ clickable: true }}
+        loop={true}
+      >
         {videos.map((video) => (
-          <swiper-slide key={video.id}>
-            <Banner  video={video} />
-          </swiper-slide>
+          <SwiperSlide className="MeuSwiperSlide" key={video.id}>
+            <Banner video={video} />
+          </SwiperSlide>
         ))}
-       </swiper-container>
+      </Swiper>
     );
   }
 }

@@ -12,6 +12,7 @@ const DivContainer = styled.div`
 `;
 
 const MainContainer = styled.main`
+z-index: 1;
 `;
 
 function Home() {
