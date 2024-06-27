@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { VideosContext } from "../context/VideosContext";
 
-export const useVideoContext = () => {
+export const useVideosContext = () => {
     const { videos, setVideos } = useContext(VideosContext);
 
     function adicionarVideo(novoVideo) {

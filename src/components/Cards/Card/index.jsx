@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import deletar from "/imagens/deletar.png"
 import editar from "/imagens/editar.png"
-import { useVideoContext } from "../../../hooks/UseVideosContext"
+import { useVideosContext } from "../../../hooks/UseVideosContext"
 
 const DivCard = styled.div`
     width: 30vw;
@@ -45,7 +45,7 @@ const DivCardBotao = styled.div`
 `
 
 function Card({ id, img }) {
-    const {removerVideo}  = useVideoContext();
+    const {removerVideo}  = useVideosContext();
 
     return (
         <DivCard className="DivCard">

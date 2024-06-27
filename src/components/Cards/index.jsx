@@ -1,7 +1,7 @@
 import ClassTags from "../ClassTags";
 import styled from "styled-components";
 import Card from "./Card";
-import { useVideoContext } from "../../hooks/UseVideosContext";
+import { useVideosContext } from "../../hooks/UseVideosContext";
 
 const DivCards = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ const DivCard = styled.div`
 `;
 
 function Cards() {
-  const { videos } = useVideoContext();
+  const { videos } = useVideosContext();
   const videosFE = [];
   const videosBE = [];
   const videosMB = [];

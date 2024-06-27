@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Banner from "../../components/Banner";
 import Cards from "../../components/Cards";
+import Slider from "../../components/Slider";
 
 
 const DivContainer = styled.div`
@@ -11,13 +11,14 @@ const DivContainer = styled.div`
   margin: auto;
 `;
 
-const MainContainer = styled.main``;
+const MainContainer = styled.main`
+`;
 
 function Home() {
   return (
     <>
       <DivContainer className="container">
-        <Banner />
+        <Slider />
         <MainContainer>
           <Cards />
         </MainContainer>

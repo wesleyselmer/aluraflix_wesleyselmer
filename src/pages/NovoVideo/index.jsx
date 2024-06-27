@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Formik, useField } from "formik";
-import { useVideoContext } from "../../hooks/UseVideosContext";
+import { useVideosContext } from "../../hooks/UseVideosContext";
 
 const DivNovoVideo = styled.div`
   color: #f5f5f5;
@@ -141,7 +141,7 @@ const MeuTextarea = ({ label, ...props }) => {
 };
 
 const NovoVideo = () => {
-  const { videos, adicionarVideo } = useVideoContext();
+  const { videos, adicionarVideo } = useVideosContext();
 
   return (
     <DivNovoVideo>
@@ -161,13 +161,14 @@ const NovoVideo = () => {
         validationSchema={Yup.object({
           titulo: Yup.string()
             .min(4, "No mínimo 4 caracteres")
-            .max(15, "No máximo 15 caracteres")
+            .max(50, "No máximo 50 caracteres")
             .required("Obrigatório"),
           categoria: Yup.string()
             .oneOf(["1", "2", "3"], "Tipo inválido")
             .required("Obrigatório"),
           imagem: Yup.string().required("Obrigatório"),
           link: Yup.string().required("Obrigatório"),
+          descricao: Yup.string().max(143, "Máximo de 143 caracteres"),
         })}
         onSubmit={(values, actions) => {
           const novoVideo = {

@@ -1,4 +1,5 @@
 import ClassTags from "@/components/ClassTags";
+import { useState } from "react";
 import styled from "styled-components";
 
 const DivCardBanner = styled.div`
@@ -38,21 +39,31 @@ const DivInfo = styled.div`
     }
 `
 
-function CardBanner() {
+function CardBanner({ video }) {
+  let categoria = '';
+
+  if(video.categoria === "1"){
+    categoria = "FRONT END";
+  }
+
+  if(video.categoria === "2"){
+    categoria = "BACK END";
+  }
+
+  if(video.categoria === "3"){
+    categoria = "MOBILE";
+  }
+  
   return (
     <DivCardBanner className="DivClassBanner">
       <DivInfo>
-        <ClassTags local='banner'>FRONT END</ClassTags>
-        <h1>SEO con React</h1>
+        <ClassTags local='banner'>{categoria}</ClassTags>
+        <h1>{video.titulo}</h1>
         <p>
-          Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar
-          uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas
-          dicas sobre performance e de quebra conhecer uma plataforma
-          sensacional pra fazer deploy que é a Vercel. Tudo em 22 minutos nesse
-          vídeo feito com todo o carinho do mundo construindo uma "Pokedex"!
+          {video.descricao}
         </p>
       </DivInfo>
-      <img src="/imagens/banner.png" alt="Banner do Card" />
+      <img src={video.imagem} alt="Banner do Card" />
     </DivCardBanner>
   );
 }
