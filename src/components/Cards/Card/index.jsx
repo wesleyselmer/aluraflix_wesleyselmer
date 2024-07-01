@@ -2,18 +2,16 @@ import styled from "styled-components";
 import deletar from "/imagens/deletar.png";
 import editar from "/imagens/editar.png";
 import { useVideosContext } from "../../../hooks/UseVideosContext";
-import ModalEditar from "../../ModalEditar";
-import { useState } from "react";
 import { useModalContext } from "../../../hooks/UseModalContext";
 
 const DivCard = styled.div`
   width: 30vw;
+  min-width: 30vw;
   height: 22vw;
   border: 0.14vw solid #2271d1;
   border-radius: 0.7vw;
   box-shadow: inset 0 0.35vw 1.39vw #2271d1;
-  margin: auto;
-  overflow: hidden;
+  margin: 0 .5vw .5vw 0;
 
   & img {
     width: 100%;
@@ -49,7 +47,7 @@ const DivCardBotao = styled.div`
 
 function Card({ id, img }) {
   const { removerVideo } = useVideosContext();
-  const { alterarModal, alterarVideoId } = useModalContext();
+  const { ehModalAberta, alterarVideoIdModal } = useModalContext();
 
   return (
     <DivCard className="DivCard">
@@ -62,8 +60,8 @@ function Card({ id, img }) {
         <DivCardBotao
           className="DivCardBotão"
           onClick={() => {
-            alterarVideoId(id);
-            alterarModal(true);
+            alterarVideoIdModal(id);
+            ehModalAberta(true);
           }}
         >
           <img src={editar} alt="Editar" />

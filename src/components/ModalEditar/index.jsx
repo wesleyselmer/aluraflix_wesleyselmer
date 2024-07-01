@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 import { Formik, useField } from "formik";
-import {useModalContext} from "../../hooks/UseModalContext";
+import { useModalContext } from "../../hooks/UseModalContext";
 import { useVideosContext } from "../../hooks/UseVideosContext";
 import * as Yup from "yup";
-
 
 const Overlay = styled.div`
   background-color: rgba(3, 18, 47, 0.76);
@@ -12,47 +11,50 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 2;
 `;
 
 const DialogEstilizado = styled.dialog`
+  z-index: 2;
   position: absolute;
-  top: 294px;
-  background: transparent;
+  top: 50px;
+  background: #03122f;
   padding: 0;
-  border: 0;
-  width: 1100px;
+  border: 5px solid #6bd1ff;
+  border-radius: 15px;
+  width: 60vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  form {
-    button {
-      position: relative;
-      top: 20px;
-      right: 60px;
-    }
+  align-items: center;
 
-    h1 {
-      color: #2271d1;
-      font-size: 60px;
-      font-weight: bold;
-    }
+  h1 {
+    color: #2271d1;
+    font-size: 60px;
+    font-weight: bolder;
   }
 `;
 
 const FormNovoVideo = styled.form`
   width: 100%;
   font-size: 1.39vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
 
   .item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.5vw;
-    width: calc(50% - 2.08vw);
+    width: 80%;
+    color: #ffffff;
   }
 
   input {
     background-color: transparent;
-    border: 0.2vw solid #262626;
+    border: 0.2vw solid #2271d1;
     border-radius: 0.7vw;
     padding: 1.04vw 0 1.04vw 1vw;
     width: 100%;
@@ -87,6 +89,8 @@ const FormNovoVideo = styled.form`
 
   button:hover {
     border-color: #2271d1;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 1.2vw #2271d1;
   }
 
   .erro {
@@ -130,24 +134,28 @@ const MeuTextarea = ({ label, ...props }) => {
   );
 };
 
-const ModalEditar = ({ videoId }) => {
-  const { modalAberta } = useModalContext();
-  const { videos } = useVideosContext();
-  const video = videos && videoId ? videos.find(videoId) : null;
+const ModalEditar = () => {
+  const { modalAberta, videoId, ehModalAberta, alterarVideoIdModal } =
+    useModalContext();
+  const { videos, atualizarVideo } = useVideosContext();
+  const video =
+    videos && videoId ? videos.find((video) => video.id === videoId) : null;
+
   return (
     <>
       {video && modalAberta && (
         <>
           <Overlay />
-          <DialogEstilizado open={!!foto} onClose={aoFechar}>
+          <DialogEstilizado>
             <h1>EDITAR CARD:</h1>
             <Formik
               initialValues={{
-                titulo: "",
-                categoria: "",
-                imagem: "",
-                link: "",
-                descricao: "",
+                id: video.id,
+                titulo: video.titulo,
+                categoria: video.categoria,
+                imagem: video.imagem,
+                link: video.link,
+                descricao: video.descricao,
               }}
               validationSchema={Yup.object({
                 titulo: Yup.string()
@@ -163,7 +171,7 @@ const ModalEditar = ({ videoId }) => {
               })}
               onSubmit={(values, actions) => {
                 const novoVideo = {
-                  id: String(videos.length + 1),
+                  id: values.id,
                   categoria: values.categoria,
                   titulo: values.titulo,
                   imagem: values.imagem,
@@ -171,62 +179,72 @@ const ModalEditar = ({ videoId }) => {
                   descricao: values.descricao,
                 };
                 setTimeout(() => {
-                  adicionarVideo(novoVideo);
+                  atualizarVideo(videoId, novoVideo);
+                  alterarVideoIdModal(null);
+                  ehModalAberta(false);
                   actions.setSubmitting(false);
                 }, 1000);
-                console.log(videos);
+                console.log(novoVideo);
               }}
             >
               {(props) => (
                 <FormNovoVideo onSubmit={props.handleSubmit}>
-                 
-                    <MeuInputTexto
-                      label="Titulo"
-                      name="titulo"
-                      id="titulo"
-                      type="text"
-                      placeholder="Informe o título"
-                    />
+                  <MeuInputTexto
+                    label="Titulo"
+                    name="titulo"
+                    id="titulo"
+                    type="text"
+                    placeholder="Informe o título"
+                  />
 
-                    <MeuSelect
-                      label="Categoria: "
-                      name="categoria"
-                      id="categoria"
-                    >
-                      <option value="">Escolha a categoria</option>
-                      <option value="1">Front-End</option>
-                      <option value="2">Back-End</option>
-                      <option value="3">Mobile</option>
-                    </MeuSelect>
-                 
-                    <MeuInputTexto
-                      label="Imagem"
-                      name="imagem"
-                      id="imagem"
-                      type="text"
-                      placeholder="Informe a imagem"
-                    />
+                  <MeuSelect
+                    label="Categoria: "
+                    name="categoria"
+                    id="categoria"
+                  >
+                    <option value="">Escolha a categoria</option>
+                    <option value="1">Front-End</option>
+                    <option value="2">Back-End</option>
+                    <option value="3">Mobile</option>
+                  </MeuSelect>
 
-                    <MeuInputTexto
-                      label="Link"
-                      name="link"
-                      id="link"
-                      type="text"
-                      placeholder="Informe o link do vídeo"
-                    />
-                 
-                    <MeuTextarea
-                      label="Descricao"
-                      name="descricao"
-                      id="descricao"
-                      placeholder="Sobre o que é esse vídeo?"
-                      rows="7"
-                      cols="106"
-                    />
-                 
+                  <MeuInputTexto
+                    label="Imagem"
+                    name="imagem"
+                    id="imagem"
+                    type="text"
+                    placeholder="Informe a imagem"
+                  />
+
+                  <MeuInputTexto
+                    label="Link"
+                    name="link"
+                    id="link"
+                    type="text"
+                    placeholder="Informe o link do vídeo"
+                  />
+
+                  <MeuTextarea
+                    label="Descricao"
+                    name="descricao"
+                    id="descricao"
+                    placeholder="Sobre o que é esse vídeo?"
+                    rows="7"
+                    cols="106"
+                  />
+
                   <div className="botoes">
-                    <button type="submit">Guardar</button>
-                    <button>Limpar</button>
+                    <button type="submit" disabled={props.isSubmitting}>
+                      Guardar
+                    </button>
+                    <button
+                      onClick={() => {
+                        ehModalAberta(false);
+                        alterarVideoIdModal(null);
+                      }}
+                    >
+                      Sair
+                    </button>
                   </div>
                 </FormNovoVideo>
               )}

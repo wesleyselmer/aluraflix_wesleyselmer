@@ -16,8 +16,9 @@ const DivCards = styled.div`
 const DivCard = styled.div`
   width: calc(100vw - 5.56vw);
   display: flex;
-  gap: 2.08vw;
+  justify-content: space-around;
   margin-bottom: 6.46vw;
+  overflow-x: auto;
 `;
 
 function Cards() {
