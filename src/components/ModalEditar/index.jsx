@@ -1,8 +1,11 @@
 import { styled } from "styled-components";
-import { Formik, useField } from "formik";
+import { Formik } from "formik";
 import { useModalContext } from "../../hooks/UseModalContext";
 import { useVideosContext } from "../../hooks/UseVideosContext";
 import * as Yup from "yup";
+import InputTexto from "../Form/InputTexto";
+import Select from "../Form/Select";
+import Textarea from "../Form/Textarea";
 
 const Overlay = styled.div`
   background-color: rgba(3, 18, 47, 0.76);
@@ -98,64 +101,26 @@ const FormNovoVideo = styled.form`
   }
 `;
 
-const MeuInputTexto = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...campo} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="erro">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MeuSelect = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...campo} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="erro">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MeuTextarea = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea {...campo} {...props} />
-    </div>
-  );
-};
-
 const ModalEditar = () => {
   const { modalAberta, videoId, ehModalAberta, alterarVideoIdModal } =
     useModalContext();
-  const { videos, atualizarVideo } = useVideosContext();
-  const video =
-    videos && videoId ? videos.find((video) => video.id === videoId) : null;
+  const { videos, adicionarVideo } = useVideosContext();
+  const videoModal = videos.find((video) => video.id === videoId);
 
   return (
     <>
-      {video && modalAberta && (
+      {videoModal && modalAberta && (
         <>
           <Overlay />
           <DialogEstilizado>
             <h1>EDITAR CARD:</h1>
             <Formik
               initialValues={{
-                id: video.id,
-                titulo: video.titulo,
-                categoria: video.categoria,
-                imagem: video.imagem,
-                link: video.link,
-                descricao: video.descricao,
+                titulo: videoModal.titulo,
+                categoria: videoModal.categoria,
+                imagem: videoModal.imagem,
+                link: videoModal.link,
+                descricao: videoModal.descricao,
               }}
               validationSchema={Yup.object({
                 titulo: Yup.string()
@@ -169,80 +134,56 @@ const ModalEditar = () => {
                 link: Yup.string().required("Obrigatório"),
                 descricao: Yup.string().max(143, "Máximo de 143 caracteres"),
               })}
-              onSubmit={(values, actions) => {
+              onSubmit={(values) => {
                 const novoVideo = {
-                  id: values.id,
-                  categoria: values.categoria,
+                  id: videoModal.id,
                   titulo: values.titulo,
+                  categoria: values.categoria,
                   imagem: values.imagem,
                   link: values.link,
                   descricao: values.descricao,
                 };
-                setTimeout(() => {
-                  atualizarVideo(videoId, novoVideo);
-                  alterarVideoIdModal(null);
-                  ehModalAberta(false);
-                  actions.setSubmitting(false);
-                }, 1000);
-                console.log(novoVideo);
+                adicionarVideo(novoVideo);
+                ehModalAberta(false);
               }}
             >
               {(props) => (
                 <FormNovoVideo onSubmit={props.handleSubmit}>
-                  <MeuInputTexto
+                  <InputTexto
                     label="Titulo"
                     name="titulo"
                     id="titulo"
                     type="text"
-                    placeholder="Informe o título"
                   />
 
-                  <MeuSelect
-                    label="Categoria: "
-                    name="categoria"
-                    id="categoria"
-                  >
+                  <Select label="Categoria: " name="categoria" id="categoria">
                     <option value="">Escolha a categoria</option>
                     <option value="1">Front-End</option>
                     <option value="2">Back-End</option>
                     <option value="3">Mobile</option>
-                  </MeuSelect>
+                  </Select>
 
-                  <MeuInputTexto
+                  <InputTexto
                     label="Imagem"
                     name="imagem"
                     id="imagem"
                     type="text"
-                    placeholder="Informe a imagem"
                   />
 
-                  <MeuInputTexto
-                    label="Link"
-                    name="link"
-                    id="link"
-                    type="text"
-                    placeholder="Informe o link do vídeo"
-                  />
+                  <InputTexto label="Link" name="link" id="link" type="text" />
 
-                  <MeuTextarea
+                  <Textarea
+                    control="textarea"
                     label="Descricao"
                     name="descricao"
                     id="descricao"
-                    placeholder="Sobre o que é esse vídeo?"
                     rows="7"
                     cols="106"
                   />
 
                   <div className="botoes">
-                    <button type="submit" disabled={props.isSubmitting}>
-                      Guardar
-                    </button>
-                    <button
-                      onClick={() => {
-                        ehModalAberta(false);
-                        alterarVideoIdModal(null);
-                      }}
-                    >
+                    <button type="submit">Guardar</button>
+                    <button type="button" onClick={() => ehModalAberta(false)}>
                       Sair
                     </button>
                   </div>

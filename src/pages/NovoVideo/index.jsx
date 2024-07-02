@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
-import { Formik, useField } from "formik";
+import InputTexto from "../../components/Form/InputTexto";
+import Select from "../../components/Form/Select";
+import Textarea from "../../components/Form/Textarea";
+import { Formik } from "formik";
 import { useVideosContext } from "../../hooks/UseVideosContext";
 
 const DivNovoVideo = styled.div`
@@ -104,42 +107,6 @@ const FormNovoVideo = styled.form`
   }
 `;
 
-const MeuInputTexto = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...campo} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="erro">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MeuSelect = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...campo} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="erro">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MeuTextarea = ({ label, ...props }) => {
-  const [campo, meta] = useField(props);
-  return (
-    <div className="item">
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea {...campo} {...props} />
-    </div>
-  );
-};
-
 const NovoVideo = () => {
   const { videos, adicionarVideo } = useVideosContext();
 
@@ -186,56 +153,56 @@ const NovoVideo = () => {
           console.log(videos);
         }}
       >
-        {props => (
-        <FormNovoVideo onSubmit={props.handleSubmit}>
-          <div className="linha">
-            <MeuInputTexto
-              label="Titulo"
-              name="titulo"
-              id="titulo"
-              type="text"
-              placeholder="Informe o título"
-            />
+        {(props) => (
+          <FormNovoVideo onSubmit={props.handleSubmit}>
+            <div className="linha">
+              <InputTexto
+                label="Titulo"
+                name="titulo"
+                id="titulo"
+                type="text"
+                placeholder="Informe o título"
+              />
 
-            <MeuSelect label="Categoria: " name="categoria" id="categoria">
-              <option value="">Escolha a categoria</option>
-              <option value="1">Front-End</option>
-              <option value="2">Back-End</option>
-              <option value="3">Mobile</option>
-            </MeuSelect>
-          </div>
-          <div className="linha">
-            <MeuInputTexto
-              label="Imagem"
-              name="imagem"
-              id="imagem"
-              type="text"
-              placeholder="Informe a imagem"
-            />
+              <Select label="Categoria: " name="categoria" id="categoria">
+                <option value="">Escolha a categoria</option>
+                <option value="1">Front-End</option>
+                <option value="2">Back-End</option>
+                <option value="3">Mobile</option>
+              </Select>
+            </div>
+            <div className="linha">
+              <InputTexto
+                label="Imagem"
+                name="imagem"
+                id="imagem"
+                type="text"
+                placeholder="Informe a imagem"
+              />
 
-            <MeuInputTexto
-              label="Link"
-              name="link"
-              id="link"
-              type="text"
-              placeholder="Informe o link do vídeo"
-            />
-          </div>
-          <div className="linha">
-            <MeuTextarea
-              label="Descricao"
-              name="descricao"
-              id="descricao"
-              placeholder="Sobre o que é esse vídeo?"
-              rows="7"
-              cols="106"
-            />
-          </div>
-          <div className="botoes">
-            <button type="submit">Guardar</button>
-            <button>Limpar</button>
-          </div>
-        </FormNovoVideo>
+              <InputTexto
+                label="Link"
+                name="link"
+                id="link"
+                type="text"
+                placeholder="Informe o link do vídeo"
+              />
+            </div>
+            <div className="linha">
+              <Textarea
+                label="Descricao"
+                name="descricao"
+                id="descricao"
+                placeholder="Sobre o que é esse vídeo?"
+                rows="7"
+                cols="106"
+              />
+            </div>
+            <div className="botoes">
+              <button type="submit">Guardar</button>
+              <button>Limpar</button>
+            </div>
+          </FormNovoVideo>
         )}
       </Formik>
     </DivNovoVideo>

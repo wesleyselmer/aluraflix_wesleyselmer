@@ -5,36 +5,27 @@ export const useVideosContext = () => {
   const { videos, setVideos } = useContext(VideosContext);
 
   function adicionarVideo(novoVideo) {
-    const videoRepetido = videos.some((item) => item.titulo === novoVideo.titulo && item.link === novoVideo.link);
-    let novaLista = [...videos];
+    const videoRepetido = videos.some(
+      (item) => item.titulo === novoVideo.titulo && item.link === novoVideo.link
+    );
 
     if (!videoRepetido) {
-      novaLista.push(novoVideo);
-      return setVideos(novaLista);
+      setVideos([...videos, novoVideo]);
+    } else {
+      const novaLista = videos.map((video) => {
+        if (video.id === novoVideo.id) {
+          return novoVideo;
+        } else {
+          return video;
+        }
+      });
+      setVideos(novaLista);
     }
-
-    novaLista = videos.map((video) => {
-      if (video.id === novoVideo.id) {
-        video = novoVideo;
-      }
-      return setVideos(novaLista);
-    });
   }
 
   function removerVideo(id) {
-    const novaLista = videos.filter((video) => video.id !== id);
-
-    return setVideos(novaLista);
+    setVideos(videos.filter((video) => video.id !== id));
   }
 
-  function atualizarVideo(id, videoAlterado) {
-    videos.map((video) => {
-      if (video.id === id) {
-        return videoAlterado;
-      }
-      return video;
-    });
-  }
-
-  return { videos, adicionarVideo, atualizarVideo, removerVideo };
+  return { videos, adicionarVideo, removerVideo };
 };

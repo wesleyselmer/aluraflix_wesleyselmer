@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Cards from "../../components/Cards";
 import Slider from "../../components/Slider";
 import ModalEditar from "../../components/ModalEditar";
+import { useVideosContext } from "../../hooks/UseVideosContext";
 
 
 const DivContainer = styled.div`
@@ -17,7 +18,16 @@ z-index: 1;
 `;
 
 function Home() {
+  const novoVideo = {
+    id: "1",
+    categoria: "1",
+    titulo: "O que faz uma desenvolvedora Front-End",
+    imagem: "https://i.ytimg.com/vi/ZY3-MFxVdEw/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=ZY3-MFxVdEw",
+    descricao: "O que é Front-end?"
+  }
   
+  const {adicionarVideo} = useVideosContext();
   return (
     <>
       <DivContainer className="container">
