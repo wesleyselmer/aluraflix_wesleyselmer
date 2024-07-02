@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as Yup from "yup";
+import ValidationSchema from "../../components/Form/ValidationSchema";
 import InputTexto from "../../components/Form/InputTexto";
 import Select from "../../components/Form/Select";
 import Textarea from "../../components/Form/Textarea";
@@ -74,6 +74,22 @@ const FormNovoVideo = styled.form`
     box-sizing: border-box;
   }
 
+  select{
+    appearance: none;
+    background: transparent;
+    border: 0.2vw solid #262626;
+    border-radius: 0.7vw;
+    padding: 1.04vw 0 1.04vw 1vw;
+    width: 100%;
+    font-size: 1.39vw;
+    color: #a5a5a5;
+    box-sizing: border-box;
+    background-image: url('/imagens/arrow-down.png');
+    background-size: 12%;
+    background-position: right 0px top 50%;
+    background-repeat: no-repeat;
+  }
+
   textarea {
     background-color: transparent;
     border: 0.2vw solid #262626;
@@ -125,18 +141,7 @@ const NovoVideo = () => {
           link: "",
           descricao: "",
         }}
-        validationSchema={Yup.object({
-          titulo: Yup.string()
-            .min(4, "No mínimo 4 caracteres")
-            .max(50, "No máximo 50 caracteres")
-            .required("Obrigatório"),
-          categoria: Yup.string()
-            .oneOf(["1", "2", "3"], "Tipo inválido")
-            .required("Obrigatório"),
-          imagem: Yup.string().required("Obrigatório"),
-          link: Yup.string().required("Obrigatório"),
-          descricao: Yup.string().max(143, "Máximo de 143 caracteres"),
-        })}
+        validationSchema={ValidationSchema}
         onSubmit={(values, actions) => {
           const novoVideo = {
             id: String(videos.length + 1),
@@ -157,11 +162,11 @@ const NovoVideo = () => {
           <FormNovoVideo onSubmit={props.handleSubmit}>
             <div className="linha">
               <InputTexto
-                label="Titulo"
+                label="Título:"
                 name="titulo"
                 id="titulo"
                 type="text"
-                placeholder="Informe o título"
+                placeholder="Informe o título do card"
               />
 
               <Select label="Categoria: " name="categoria" id="categoria">
@@ -173,15 +178,15 @@ const NovoVideo = () => {
             </div>
             <div className="linha">
               <InputTexto
-                label="Imagem"
+                label="Imagem:"
                 name="imagem"
                 id="imagem"
                 type="text"
-                placeholder="Informe a imagem"
+                placeholder="Informe o link da imagem"
               />
 
               <InputTexto
-                label="Link"
+                label="Link:"
                 name="link"
                 id="link"
                 type="text"
@@ -190,7 +195,7 @@ const NovoVideo = () => {
             </div>
             <div className="linha">
               <Textarea
-                label="Descricao"
+                label="Descrição:"
                 name="descricao"
                 id="descricao"
                 placeholder="Sobre o que é esse vídeo?"

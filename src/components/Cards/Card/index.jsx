@@ -66,6 +66,7 @@ function Card({ id, img }) {
           onClick={() => {
             alterarVideoIdModal(id);
             ehModalAberta(true);
+            window.scrollTo(0, 0);
           }}
         >
           <img src={editar} alt="Editar" />

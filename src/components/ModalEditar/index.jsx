@@ -2,10 +2,10 @@ import { styled } from "styled-components";
 import { Formik } from "formik";
 import { useModalContext } from "../../hooks/UseModalContext";
 import { useVideosContext } from "../../hooks/UseVideosContext";
-import * as Yup from "yup";
 import InputTexto from "../Form/InputTexto";
 import Select from "../Form/Select";
 import Textarea from "../Form/Textarea";
+import ValidationSchema from "../Form/ValidationSchema";
 
 const Overlay = styled.div`
   background-color: rgba(3, 18, 47, 0.76);
@@ -66,6 +66,22 @@ const FormNovoVideo = styled.form`
     box-sizing: border-box;
   }
 
+  select{
+    appearance: none;
+    background: transparent;
+    border: 0.2vw solid #2271d1;
+    border-radius: 0.7vw;
+    padding: 1.04vw 0 1.04vw 1vw;
+    width: 100%;
+    font-size: 1.39vw;
+    color: #a5a5a5;
+    box-sizing: border-box;
+    background-image: url('/imagens/arrow-down.png');
+    background-size: 12%;
+    background-position: right 0px top 50%;
+    background-repeat: no-repeat;
+  }
+
   textarea {
     background-color: transparent;
     border: 0.2vw solid #262626;
@@ -122,18 +138,7 @@ const ModalEditar = () => {
                 link: videoModal.link,
                 descricao: videoModal.descricao,
               }}
-              validationSchema={Yup.object({
-                titulo: Yup.string()
-                  .min(4, "No mínimo 4 caracteres")
-                  .max(50, "No máximo 50 caracteres")
-                  .required("Obrigatório"),
-                categoria: Yup.string()
-                  .oneOf(["1", "2", "3"], "Tipo inválido")
-                  .required("Obrigatório"),
-                imagem: Yup.string().required("Obrigatório"),
-                link: Yup.string().required("Obrigatório"),
-                descricao: Yup.string().max(143, "Máximo de 143 caracteres"),
-              })}
+              validationSchema={ValidationSchema}
               onSubmit={(values) => {
                 const novoVideo = {
                   id: videoModal.id,
