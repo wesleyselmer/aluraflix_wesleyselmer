@@ -6,19 +6,23 @@ import { useModalContext } from "../../../hooks/UseModalContext";
 
 const DivCard = styled.div`
   width: 30vw;
-  min-width: 30vw;
+  min-width: 432px;
   height: 22vw;
+  min-height: 325px;
   border: 0.14vw solid #2271d1;
   border-radius: 0.7vw;
   box-shadow: inset 0 0.35vw 1.39vw #2271d1;
-  margin: 0 .5vw .5vw 0;
-
-  & img {
-    width: 100%;
-    height: 18vw;
-    object-fit: cover;
-  }
+  margin: 0 0.5vw 0.5vw 0;
 `;
+
+const ImgCard = styled.img`
+  width: 100%;
+  height: 18vw;
+  min-height: 260px;
+  object-fit: cover;
+  z-index: -1;
+`;
+
 const DivCardBotoes = styled.div`
   height: 3vw;
   display: flex;
@@ -51,7 +55,7 @@ function Card({ id, img }) {
 
   return (
     <DivCard className="DivCard">
-      <img src={img} alt={img} />
+      <ImgCard src={img} alt={img} />
       <DivCardBotoes className="DivCardBotoes">
         <DivCardBotao className="DivCardBotão">
           <img src={deletar} alt="Deletar" onClick={() => removerVideo(id)} />

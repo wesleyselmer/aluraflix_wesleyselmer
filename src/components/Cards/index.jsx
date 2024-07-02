@@ -18,7 +18,14 @@ const DivCard = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 6.46vw;
-  overflow-x: auto;
+  overflow-x: scroll;
+
+  ::-webkit-scrollbar-track {
+    background: rgba(34, 113, 209, .17);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2271D1;
+  }
 `;
 
 function Cards() {

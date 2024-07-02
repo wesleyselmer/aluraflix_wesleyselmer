@@ -29,7 +29,7 @@ const EstilosGlobais = createGlobalStyle`
       font-family: MontserratRegular;
       width: 100%;
       background-color: #191919;
-      overflow: scroll;
+      overflow: scroll; 
     }
     body {
       margin: 0;
