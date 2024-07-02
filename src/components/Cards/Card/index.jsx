@@ -57,8 +57,8 @@ function Card({ id, img }) {
     <DivCard className="DivCard">
       <ImgCard src={img} alt={img} />
       <DivCardBotoes className="DivCardBotoes">
-        <DivCardBotao className="DivCardBotão">
-          <img src={deletar} alt="Deletar" onClick={() => removerVideo(id)} />
+        <DivCardBotao className="DivCardBotão" onClick={() => removerVideo(id)}>
+          <img src={deletar} alt="Deletar" />
           <h2>Deletar</h2>
         </DivCardBotao>
         <DivCardBotao
