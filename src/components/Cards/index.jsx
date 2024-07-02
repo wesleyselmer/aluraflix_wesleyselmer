@@ -18,7 +18,7 @@ const DivCard = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 6.46vw;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   ::-webkit-scrollbar-track {
     background: rgba(34, 113, 209, .17);
