@@ -9,7 +9,9 @@ export const VideosProvider = ({ children }) => {
   useEffect(() => {
     fetch("https://wesleyselmer.github.io/aluraflix-api/db.json")
       .then((resposta) => resposta.json())
-      .then((dados) => setVideos(dados));
+      .then((dados) => {
+        setVideos(dados.videos)
+      });
   }, []);
 
   return (
