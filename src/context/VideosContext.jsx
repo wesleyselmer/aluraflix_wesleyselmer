@@ -7,7 +7,7 @@ export const VideosProvider = ({ children }) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/videos")
+    fetch("https://wesleyselmer.github.io/aluraflix-api/db.json")
       .then((resposta) => resposta.json())
       .then((dados) => setVideos(dados));
   }, []);
