@@ -6,7 +6,7 @@ import { useVideosContext } from "../../hooks/UseVideosContext";
 const DivCards = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 40px 40px;
+  align-items: center;
   gap: 40px;
 
   position: relative;
