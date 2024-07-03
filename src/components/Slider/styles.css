@@ -4,6 +4,10 @@
     height: 45vw;
     margin: 0 auto;
     z-index: -1;
+
+    @media(max-width: 430px){
+      display: none !important;
+    }
   }
   
 .MeuSwiperSlide {

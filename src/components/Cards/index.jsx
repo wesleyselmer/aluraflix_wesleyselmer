@@ -6,25 +6,37 @@ import { useVideosContext } from "../../hooks/UseVideosContext";
 const DivCards = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 2.78vw 2.78vw;
-  gap: 2.78vw;
+  margin: 0 40px 40px;
+  gap: 40px;
 
   position: relative;
-  top: -2vw;
+  top: -32px;
+
+  @media(max-width: 1024px){
+
+    align-items: center;
+    top: 32px;
+  }
+
+  @media(max-width: 430px){
+    
+  }
 `;
 
 const DivCard = styled.div`
-  width: calc(100vw - 5.56vw);
+  width: 1356px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 6.46vw;
+  gap: 18px;
+  margin: 0 3px 90px;
   overflow-x: auto;
 
-  ::-webkit-scrollbar-track {
-    background: rgba(34, 113, 209, .17);
+  @media(max-width: 1024px){
+    width: 894px;
   }
-  ::-webkit-scrollbar-thumb {
-    background-color: #2271D1;
+
+  @media(max-width: 430px){
+    width: 390px;
   }
 `;
 

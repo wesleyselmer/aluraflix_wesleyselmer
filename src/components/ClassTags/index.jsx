@@ -8,11 +8,17 @@ const DivTags = styled.div`
   font-size: ${(props) => props.$fontSize};
   font-weight: bolder;
   line-height: auto;
-  border-radius: 1.04vw;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1.39vw;
+
+  @media(max-width: 430px){
+    width: 286px;
+    height: 70px;
+    font-size: 24px;
+  }
 `;
 
 function ClassTags({ children, local }) {
