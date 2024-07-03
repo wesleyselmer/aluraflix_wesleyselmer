@@ -12,18 +12,18 @@ const DivNovoVideo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 81.39vw;
+  width: 1360px;
   margin: auto;
 
   h1 {
-    font-size: 4.17vw;
+    font-size: 60px;
     font-weight: bolder;
-    margin: 4.86vw 0 0.7vw 0;
+    margin: 40px 0 6px 0;
   }
 
   p {
-    font-size: 1.4vw;
-    margin-bottom: 3.26vw;
+    font-size: 20px;
+    margin-bottom: 27px;
   }
 
   div {
@@ -32,26 +32,42 @@ const DivNovoVideo = styled.div`
 
   h2 {
     width: 100%;
-    font-size: 2.5vw;
+    font-size: 36px;
     font-weight: bold;
-    border-top: 0.2vw solid #262626;
-    border-bottom: 0.2vw solid #262626;
-    margin: 0 0 4.17vw 0;
-    padding: 1.67vw 0;
+    border-top: 2px solid #262626;
+    border-bottom: 2px solid #262626;
+    margin-bottom: 30px;
+    padding: 14px 0;
+  }
+
+  @media(max-width: 1024px){
+    width: 924px;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+
+  @media(max-width: 430px){
+    width: 330px;
   }
 `;
 
 const FormNovoVideo = styled.form`
   width: 100%;
-  font-size: 1.39vw;
+  font-size: 20px;
 
   .linha {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    gap: 2.08vw;
-    margin-bottom: 4.17vw;
+    gap: 60px;
+    margin-bottom: 30px;
     width: 100%;
   }
 
@@ -59,59 +75,42 @@ const FormNovoVideo = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5vw;
-    width: calc(50% - 2.08vw);
+    gap: 20px;
+    width: 50%;
   }
 
-  input {
+  input, select, textarea {
     background-color: transparent;
-    border: 0.2vw solid #262626;
-    border-radius: 0.7vw;
-    padding: 1.04vw 0 1.04vw 1vw;
+    border: 2px solid #262626;
+    border-radius: 15px;
+    padding: 15px 0 15px 15px;
     width: 100%;
-    font-size: 1.39vw;
+    font-size: 20px;
     color: #a5a5a5;
     box-sizing: border-box;
   }
 
   select{
     appearance: none;
-    background: transparent;
-    border: 0.2vw solid #262626;
-    border-radius: 0.7vw;
-    padding: 1.04vw 0 1.04vw 1vw;
-    width: 100%;
-    font-size: 1.39vw;
-    color: #a5a5a5;
-    box-sizing: border-box;
     background-image: url('/imagens/arrow-down.png');
     background-size: 12%;
     background-position: right 0px top 50%;
     background-repeat: no-repeat;
   }
 
-  textarea {
-    background-color: transparent;
-    border: 0.2vw solid #262626;
-    border-radius: 0.7vw;
-    padding: 1.04vw 0.35vw;
-    font-size: 1.39vw;
-    color: #a5a5a5;
-  }
-
   .botoes {
-    margin-bottom: 4.17vw;
+    margin-bottom: 60px;
+    display: flex;
+    gap: 20px;
   }
 
   button {
     background-color: transparent;
-    border: 0.2vw solid #ffffff;
-    border-radius: 0.7vw;
-    padding: 1.04vw;
-    width: 12.51vw;
-    height: 3.75vw;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    width: 180px;
+    height: 54px;
     color: #ffffff;
-    margin-right: 2.08vw;
   }
 
   button:hover {
@@ -120,6 +119,22 @@ const FormNovoVideo = styled.form`
 
   .erro {
     color: #e53935;
+  }
+
+  @media(max-width: 1024px){
+   .linha {
+    gap: 10px;
+   } 
+  }
+
+  @media(max-width: 430px){
+    .linha {
+      flex-direction: column;
+    }
+
+    .item {
+      width: 100%;
+    }
   }
 `;
 
