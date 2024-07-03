@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const HeaderEstilizado = styled.header`
     max-width: 100vw;
-    width: 100%;
+    width: 1443px;
     height: 8vw;
     background-color: #262626;
     display: flex;

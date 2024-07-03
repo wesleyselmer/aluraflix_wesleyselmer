@@ -4,7 +4,7 @@ import CardBanner from "./CardBanner";
 const DivBanner = styled.div`
   height: 90%;
   max-width: 100vw;
-  width: 100%;
+  width: 1443px;
   overflow: hidden;
   background-color: #0b1528;
 `;

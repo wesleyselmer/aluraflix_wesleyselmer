@@ -29,10 +29,13 @@ const EstilosGlobais = createGlobalStyle`
       font-family: MontserratRegular;
       width: 100%;
       background-color: #191919;
-      overflow: scroll; 
+      display: flex;
+      justify-content: center;
     }
     body {
       margin: 0;
+      border: 2px solid #2771d1;
+      box-shadow: 0 .35vw 1.39vw #2271d1;
     }
     main {
       display: block;
